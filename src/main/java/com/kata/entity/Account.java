@@ -32,7 +32,7 @@ public class Account implements Serializable {
 
 
 	@OneToMany(targetEntity = Transaction.class    , cascade = {CascadeType.MERGE , CascadeType.PERSIST})
-	@JoinColumns({ @JoinColumn(name = "T_ACCOUNT_IDENT_FK", nullable = true) })
+	@JoinColumn(name = "T_ACCOUNT_IDENT_FK")
 	private java.util.Set<Transaction> transactions = new java.util.HashSet<>();
 
 
