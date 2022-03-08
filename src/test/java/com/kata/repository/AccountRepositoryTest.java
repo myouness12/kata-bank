@@ -44,7 +44,6 @@ class AccountRepositoryTest {
         var expected = 200D;
         var customerId = 1L;
         accountRepositoy.updateBalanceAccount(expected, customerId);
-        accountRepositoy.findAccountByCustomer(customerId);
         assertEquals(expected, accountRepositoy.findAccountByCustomer(customerId).get().getBalance());
     }
 
