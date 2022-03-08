@@ -7,12 +7,16 @@ import javax.persistence.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SelectBeforeUpdate;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
-@DynamicInsert(value = true)
-@DynamicUpdate(value = true)
-@SelectBeforeUpdate(value = true)
 @Table(name = "B_CUSTOMER")
 public class Customer implements Serializable {
 	
@@ -40,50 +44,4 @@ public class Customer implements Serializable {
 	
 
 
-	public Long getCustomer_ident() {
-		return customer_ident;
-	}
-
-
-	public String getNom() {
-		return nom;
-	}
-
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-
-	public java.util.Date getPhy_date_naissance() {
-		return phy_date_naissance;
-	}
-
-
-	public void setCustomer_ident(Long customer_ident) {
-		this.customer_ident = customer_ident;
-	}
-
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-
-	public void setPhy_date_naissance(java.util.Date phy_date_naissance) {
-		this.phy_date_naissance = phy_date_naissance;
-	}
-
-	public Account getAccount() {
-		return account;
-	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
 }
