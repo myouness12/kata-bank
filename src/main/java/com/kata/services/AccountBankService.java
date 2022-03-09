@@ -48,7 +48,6 @@ import java.util.Set;
 	}
 
 	@Override
-	@Transactional(readOnly = false)
 	public void saveTransactionInAccount(Account account, Transaction tx) {
 		accountRepositoy.updateBalanceAccount(account.getBalance(), account.getAccount_ident() );
 		account.getTransactions().add(tx);
