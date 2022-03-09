@@ -43,8 +43,9 @@ POST /bank/withdraw HTTP/1.1
 }
 HTTP/1.1 201 OK
 ```
-
+```bash
 GET /history/{accountId}
+```
 ```bash
 HTTP/1.1 200 OK
 {
