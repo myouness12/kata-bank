@@ -9,24 +9,7 @@ import com.kata.repository.CustomerRepository;
 public class CustomerBankService implements CustomerService {
 	
 	
-	private CustomerRepository customerRepository;
-	
-	
 
-	
-
-	private CustomerRepository getCustomerRepository() {
-		return customerRepository;
-	}
-
-	
-	@Autowired
-	private void setCustomerRepository(CustomerRepository customerRepository) {
-		this.customerRepository = customerRepository;
-	}
-	
-	
-	
 	
 
 }
