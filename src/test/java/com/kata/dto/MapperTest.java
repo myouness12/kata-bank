@@ -14,7 +14,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MapperTest {
+class MapperTest {
     private AccountHistoryMapper mapper = Mappers.getMapper(AccountHistoryMapper.class);
 
 
