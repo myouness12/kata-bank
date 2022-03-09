@@ -59,7 +59,7 @@ public class BankControllerAdvice {
     }
 
     @ExceptionHandler(InvalidFormatException.class)
-    public ResponseEntity invalidFormatException(final InvalidFormatException e) {
+    public ResponseEntity<String> invalidFormatException(final InvalidFormatException e) {
         return new ResponseEntity("Operation refused ", HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
