@@ -9,12 +9,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.transaction.annotation.Propagation.SUPPORTS;
 
 @DataJpaTest
@@ -26,14 +25,14 @@ class AccountRepositoryTest {
 
     @Test
     void findAccountWhenExisting() {
-        Long accountId = 1L;
+        long accountId = 1L;
         boolean existing = accountRepositoy.existsById(accountId);
         assertThat(existing).isTrue();
     }
 
     @Test
      void findAccountByCustomerWhenExisting() {
-        Long customerId = 1L;
+        long customerId = 1L;
         Optional<Account> account = accountRepositoy.findAccountByCustomer(customerId);
         assertThat(account).isPresent();
     }
@@ -57,7 +56,7 @@ class AccountRepositoryTest {
         Account account = accountRepositoy.findAccountByCustomer(customerId).get();
         account.getTransactions().add(tx);
         accountRepositoy.save(account);
-        Set<Transaction> listactualTransaction = accountRepositoy.findAccount(customerId).get().getTransactions();
+        Set<Transaction> listactualTransaction = accountRepositoy.findAccountAndListTransaction(customerId).get().getTransactions();
         assertThat(listactualTransaction).hasSize(1);
     }
 

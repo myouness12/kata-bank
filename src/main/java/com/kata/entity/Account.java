@@ -1,19 +1,13 @@
 package com.kata.entity;
 
-import java.io.Serializable;
+import lombok.*;
 
 import javax.persistence.*;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.SelectBeforeUpdate;
+import java.io.Serializable;
 
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -24,12 +18,11 @@ public class Account implements Serializable {
 	@Column(name = "ACCOUNT_IDENT", nullable = false)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long account_ident;
+	private Long accountIdent;
 	
 	
 	@Column(name="BALANCE", nullable=true)
 	private Double balance;
-
 
 	@OneToMany(targetEntity = Transaction.class    , cascade = {CascadeType.MERGE , CascadeType.PERSIST})
 	@JoinColumn(name = "T_ACCOUNT_IDENT_FK")

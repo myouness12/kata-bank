@@ -1,18 +1,16 @@
 package com.kata.services;
 
-import com.kata.entity.Transaction;
-
 import com.kata.entity.Account;
-
-import java.util.Optional;
+import com.kata.enums.Operation;
 
 
 public interface AccountService {
 	
 	 Account findAccountByCustomer(Long customer);
+
+	Account appliedOperationAccount(Account account, double amount, Operation typeOperation);
 	
 
-	void saveTransactionInAccount(Account account, Transaction tx);
 
 
 

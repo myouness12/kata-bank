@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,31 +19,31 @@ public class BankControllerAdvice {
 
     @ExceptionHandler(AccountNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String AccountNotFoundHandler(AccountNotFoundException ex) {
+    String accountNotFoundHandler(AccountNotFoundException ex) {
         return ex.getMessage();
     }
 
     @ExceptionHandler(CustomerNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String CustommerNotFoundHandler(CustomerNotFoundException ex) {
+    String custommerNotFoundHandler(CustomerNotFoundException ex) {
         return ex.getMessage();
     }
 
     @ExceptionHandler(NoOperationFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String NoOperationFoundHandler(NoOperationFoundException ex) {
+    String noOperationFoundHandler(NoOperationFoundException ex) {
         return ex.getMessage();
     }
 
     @ExceptionHandler(DepositeOperationException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    String DepositeOperationHandler(DepositeOperationException ex) {
+    String depositeOperationHandler(DepositeOperationException ex) {
         return ex.getMessage();
     }
 
     @ExceptionHandler(WithdrawalOperationException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    String WithdrawalOperationHandler(WithdrawalOperationException ex) {
+    String withdrawalOperationHandler(WithdrawalOperationException ex) {
         return ex.getMessage();
     }
 
@@ -58,11 +59,21 @@ public class BankControllerAdvice {
         return errorsMap;
     }
 
-    @ExceptionHandler(InvalidFormatException.class)
-    public ResponseEntity<String> invalidFormatException(final InvalidFormatException e) {
-        return new ResponseEntity("Operation refused ", HttpStatus.UNPROCESSABLE_ENTITY);
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
+        return new ResponseEntity<>("not valid operation " + e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(InvalidFormatException.class)
+    public ResponseEntity<String> invalidFormatException(final InvalidFormatException e) {
+        return new ResponseEntity<>("Operation refused ", HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    @ExceptionHandler(NumberFormatException.class)
+    public ResponseEntity<String> numberFormatException(final NumberFormatException e) {
+        return new ResponseEntity<>("Operation refused ", HttpStatus.UNPROCESSABLE_ENTITY);
+    }
 
 
 

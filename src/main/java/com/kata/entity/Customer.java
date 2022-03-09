@@ -1,18 +1,12 @@
 package com.kata.entity;
 
-import java.io.Serializable;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.SelectBeforeUpdate;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -23,7 +17,7 @@ public class Customer implements Serializable {
 	@Column(name = "CUSTOMER_IDENT", nullable = false)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long customer_ident;
+	private Long customerIdent;
 	
 
 	@Column(name = "NOM", nullable = false, length = 255)
@@ -35,13 +29,14 @@ public class Customer implements Serializable {
 	
 	@Column(name = "DATE_NAISSANCE", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private java.util.Date phy_date_naissance;
+	private java.util.Date dateNaissance;
 
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ACCOUNT_FK")
 	private Account account;
 	
+
 
 
 }

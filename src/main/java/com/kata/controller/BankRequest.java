@@ -1,6 +1,8 @@
 package com.kata.controller;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public record BankRequest(
         @NotNull(message = "The reference account must be defined.")

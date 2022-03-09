@@ -15,4 +15,5 @@ spring:
     hibernate:
       ddl-auto: 'create-drop'
     database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: true
 

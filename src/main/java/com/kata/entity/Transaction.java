@@ -1,24 +1,16 @@
 package com.kata.entity;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Date;
-
-import javax.persistence.*;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.SelectBeforeUpdate;
-
 import com.kata.enums.Operation;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Data
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -31,7 +23,7 @@ public class Transaction  implements Serializable {
 	@Column(name = "TRANS_IDENT", nullable = false)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long trans_ident;
+	private Long transIdent;
 
 
 	
