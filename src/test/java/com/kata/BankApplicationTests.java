@@ -1,7 +1,5 @@
 package com.kata;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kata.controller.BankRequest;
 import com.kata.dto.AccountHistory;
 import com.kata.dto.ResultOperation;
@@ -11,13 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.reactive.function.BodyInserters;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-
-import java.time.LocalDateTime;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BankApplicationTests {
@@ -27,6 +22,7 @@ class BankApplicationTests {
 
 
 	@Test
+	@DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
 	void whenPostRequestDepositThenCreated() {
 	var expected = new BankRequest(1,300D);
 
@@ -46,6 +42,7 @@ class BankApplicationTests {
 	}
 
 	@Test
+	@DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
 	void whenPostRequestWithdrawThenCreated() {
 		var expected = new BankRequest(1,300D);
 		// Deposit First
@@ -74,6 +71,7 @@ class BankApplicationTests {
 
 
 	@Test
+	@DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
 	void whenGetRequestHistoryThenAcountHistoryReturned() {
 		var expected = new BankRequest(1,300D);
 
