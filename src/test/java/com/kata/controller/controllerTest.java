@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(BankController.class)
 @MockBean(JpaMetamodelMappingContext.class)
-public class controllerTest {
+class controllerTest {
 
     @Autowired
     private MockMvc mockMvc;
