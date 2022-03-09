@@ -62,17 +62,17 @@ public class BankControllerAdvice {
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
-        return new ResponseEntity<>("not valid operation " + e.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Not valid operation " + e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(InvalidFormatException.class)
     public ResponseEntity<String> invalidFormatException(final InvalidFormatException e) {
-        return new ResponseEntity<>("Operation refused ", HttpStatus.UNPROCESSABLE_ENTITY);
+        return new ResponseEntity<>("Not valid operation ", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(NumberFormatException.class)
     public ResponseEntity<String> numberFormatException(final NumberFormatException e) {
-        return new ResponseEntity<>("Operation refused ", HttpStatus.UNPROCESSABLE_ENTITY);
+        return new ResponseEntity<>("Not valid operation", HttpStatus.BAD_REQUEST);
     }
 
 
