@@ -35,17 +35,12 @@ import java.util.Set;
 
 
 
-	@Transactional(readOnly = true)
+	
 	public Account findAccountByCustomer(Long customer) {
 		return accountRepositoy.findAccountByCustomer(customer).orElseThrow(AccountNotFoundException::new);
 	}
 
 
-	
-	@Transactional(readOnly = false)
-	public void save(Account account) {
-		accountRepositoy.save(account);
-	}
 
 	@Override
 	public void saveTransactionInAccount(Account account, Transaction tx) {
