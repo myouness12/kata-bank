@@ -11,7 +11,6 @@ public interface AccountService {
 	
 	 Account findAccountByCustomer(Long customer);
 	
-	void save(Account account);
 
 	void saveTransactionInAccount(Account account, Transaction tx);
 
