@@ -10,18 +10,5 @@ import com.kata.entity.Transaction;
 @Service
 public class TransactionBankService implements TransactionService {
 	
-	private TransactionRepository tansactionRepo;
-	
-	
-	
 
-
-	private TransactionRepository getTansactionRepo() {
-		return tansactionRepo;
-	}
-
-	@Autowired
-	private void setTansactionRepo(TransactionRepository tansactionRepo) {
-		this.tansactionRepo = tansactionRepo;
-	}
 }
